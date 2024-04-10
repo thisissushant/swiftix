@@ -33,7 +33,7 @@ export default function Home() {
       </main>
 
       <footer className="bg-pink-800 text-white py-4 px-8 w-full text-center">
-        &copy; {new Date().getFullYear()} Blog By Sushant
+        {new Date().getFullYear()} Blog By Sushant
       </footer>
     </div>
   );
