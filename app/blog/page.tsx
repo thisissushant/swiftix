@@ -3,6 +3,13 @@ import Link from "next/link";
 import React, { useState } from "react";
 import Sidebar from "../components/Sidebar";
 
+interface blogPosts {
+  title: string;
+  slug: string;
+  author: string;
+  content: string;
+}
+
 const blogPosts = [
   { title: "Post 1", slug: "post-1", author: "John Doe" },
   { title: "Post 2", slug: "post-2", author: "Jane Smith" },
@@ -14,7 +21,7 @@ const BlogPages = () => {
 
   const filteredPosts = blogPosts.filter((post) => {
     const searchRegex = new RegExp(searchQuery, "i");
-    return searchRegex.test(post.title) || searchRegex.test(post.content);
+    return searchRegex.test(post.title) || searchRegex.test(post.author);
   });
   return (
     <div className="container mx-auto py-8">
@@ -33,7 +40,7 @@ const BlogPages = () => {
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
             {filteredPosts.map((post) => (
               <div
-                key={post.id}
+                key={post.slug}
                 className="bg-white rounded-lg shadow-md overflow-hidden"
               >
                 <div className="p-4  bg-pink-200">
